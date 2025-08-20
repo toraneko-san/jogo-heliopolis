@@ -32,4 +32,19 @@ function handleOrientation(event) {
   ball.style.top = `${(maxX * x) / 180 - 10}px`; // rotating device around the x axis moves the ball vertically
 }
 
-window.addEventListener("deviceorientation", handleOrientation);
+document.querySelector("button").addEventListener("click", () => {
+  if (typeof DeviceMotionEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission()
+      .then((permissionState) => {
+        if (permissionState === "granted") {
+          window.addEventListener("deviceorientation", handleOrientation);
+          console.log("DeviceMotionEvent permission granted.");
+        } else {
+          console.log("DeviceMotionEvent permission denied.");
+        }
+      })
+      .catch((err) => {
+        console.error("Error requesting DeviceMotionEvent permission:", err);
+      });
+  }
+});
