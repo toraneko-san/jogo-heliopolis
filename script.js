@@ -32,19 +32,30 @@ function handleOrientation(event) {
   ball.style.top = `${(maxX * x) / 180 - 10}px`; // rotating device around the x axis moves the ball vertically
 }
 
+function handleMotionEvent(event) {
+  const x = event.accelerationIncludingGravity.x;
+  const y = event.accelerationIncludingGravity.y;
+  const z = event.accelerationIncludingGravity.z;
+
+  output.textContent = `x: ${x}\n`;
+  output.textContent += `y: ${y}\n`;
+  output.textContent += `z: ${y}\n`;
+}
+
 document.querySelector("button").addEventListener("click", () => {
+  if (typeof DeviceOrientationEvent.requestPermission === "function") {
+    DeviceOrientationEvent.requestPermission().then((permissionState) => {
+      if (permissionState === "granted") {
+        window.addEventListener("deviceorientation", handleOrientation);
+      }
+    });
+  }
+
   if (typeof DeviceMotionEvent.requestPermission === "function") {
-    DeviceOrientationEvent.requestPermission()
-      .then((permissionState) => {
-        if (permissionState === "granted") {
-          window.addEventListener("deviceorientation", handleOrientation);
-          console.log("DeviceMotionEvent permission granted.");
-        } else {
-          console.log("DeviceMotionEvent permission denied.");
-        }
-      })
-      .catch((err) => {
-        console.error("Error requesting DeviceMotionEvent permission:", err);
-      });
+    DeviceMotionEvent.requestPermission().then((permissionState) => {
+      if (permissionState === "granted") {
+        window.addEventListener("devicemotion", handleMotionEvent, true);
+      }
+    });
   }
 });
