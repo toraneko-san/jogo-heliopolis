@@ -1,6 +1,7 @@
 const ball = document.querySelector(".ball");
 const garden = document.querySelector(".garden");
-const output = document.querySelector(".output");
+const outputOrientation = document.querySelector(".output-orientation");
+const outputMotion = document.querySelector(".output-motion");
 
 const maxX = garden.clientWidth - ball.clientWidth;
 const maxY = garden.clientHeight - ball.clientHeight;
@@ -9,8 +10,8 @@ function handleOrientation(event) {
   let x = event.beta; // In degree in the range [-180,180)
   let y = event.gamma; // In degree in the range [-90,90)
 
-  output.textContent = `beta: ${x}\n`;
-  output.textContent += `gamma: ${y}\n`;
+  outputOrientation.textContent = `beta: ${x}\n`;
+  outputOrientation.textContent += `gamma: ${y}\n`;
 
   // Because we don't want to have the device upside down
   // We constrain the x value to the range [-90,90]
@@ -37,12 +38,12 @@ function handleMotionEvent(event) {
   const y = event.accelerationIncludingGravity.y;
   const z = event.accelerationIncludingGravity.z;
 
-  output.textContent = `x: ${x}\n`;
-  output.textContent += `y: ${y}\n`;
-  output.textContent += `z: ${y}\n`;
+  outputMotion.textContent = `x: ${x}\n`;
+  outputMotion.textContent += `y: ${y}\n`;
+  outputMotion.textContent += `z: ${y}\n`;
 }
 
-document.querySelector("button").addEventListener("click", () => {
+document.querySelector(".orientation").addEventListener("click", () => {
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
     DeviceOrientationEvent.requestPermission().then((permissionState) => {
       if (permissionState === "granted") {
@@ -50,7 +51,9 @@ document.querySelector("button").addEventListener("click", () => {
       }
     });
   }
+});
 
+document.querySelector(".motion").addEventListener("click", () => {
   if (typeof DeviceMotionEvent.requestPermission === "function") {
     DeviceMotionEvent.requestPermission().then((permissionState) => {
       if (permissionState === "granted") {
@@ -59,3 +62,4 @@ document.querySelector("button").addEventListener("click", () => {
     });
   }
 });
+
