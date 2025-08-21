@@ -25,10 +25,14 @@ function handleOrientation(event) {
     x = -90;
   }
 
-  posX += x / 90;
-  posY += y / 90;
+  if (posX > ball.clientWidth / 2 || posX < maxX) {
+    posX += x / 90;
+  }
+  if (posY > ball.clientWidth / 2 || posX < maxX) {
+    posY += y / 90;
+  }
 
-  outputOrientation.textContent = `posX: ${posX}\n`;
+  outputOrientation.textContent += `posX: ${posX}\n`;
   outputOrientation.textContent += `posY: ${posY}\n`;
 
   // It centers the positioning point to the center of the ball
