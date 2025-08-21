@@ -25,10 +25,10 @@ function handleOrientation(event) {
     x = -90;
   }
 
-  if (posX > ball.clientWidth / 2 || posX < maxX) {
+  if (posX > ball.clientWidth / 2 && posX < maxX) {
     posX += x / 90;
   }
-  if (posY > ball.clientWidth / 2 || posX < maxX) {
+  if (posY > ball.clientWidth / 2 && posY < maxY) {
     posY += y / 90;
   }
 
