@@ -3,11 +3,10 @@ const garden = document.querySelector(".garden");
 const outputOrientation = document.querySelector(".output-orientation");
 const outputMotion = document.querySelector(".output-motion");
 
-let posX = 10;
-let posY = 10;
+let [posX, posY] = [10, 10];
 
-const maxX = garden.clientWidth - ball.clientWidth / 2;
-const maxY = garden.clientHeight - ball.clientHeight / 2;
+const [minX, maxX] = [ball.clientWidth / 2, garden.clientWidth - ball.clientWidth / 2];
+const [minY, maxY] = [ball.clientWidth / 2, garden.clientWidth - ball.clientWidth / 2];
 
 function handleOrientation(event) {
   let x = event.beta; // In degree in the range [-180,180)
@@ -25,20 +24,23 @@ function handleOrientation(event) {
     x = -90;
   }
 
-  if (posX > ball.clientWidth / 2 && posX < maxX) {
+  if (posX >= minX && posX <= maxX) {
     posX += x / 90;
-  } else if (posX <= ball.clientWidth / 2) {
-    posX += 1;
+  } 
+  if (posY >= minY && posY <= maxY) {
+    posY += y / 90;
+  }
+  
+  if (posX < minX) {
+    posX = minX;
   } else if (posX >= maxX) {
-    posX -= 1;
+    posX = maxX;
   }
 
-  if (posY > ball.clientWidth / 2 && posY < maxY) {
-    posY += x / 90;
-  } else if (posY <= ball.clientWidth / 2) {
-    posY += 1;
-  } else if (posY >= maxY) {
-    posY -= 1;
+  if (posY < minY) {
+    posY = minY;
+  } else if (posY > maxY) {
+    posY = maxY;
   }
 
   outputOrientation.textContent += `maxX: ${maxX}\n`;
