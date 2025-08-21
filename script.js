@@ -15,24 +15,25 @@ function handleOrientation(event) {
   outputOrientation.textContent = `beta: ${x}\n`;
   outputOrientation.textContent += `gamma: ${y}\n`;
 
-  // constrain x and y value to the range [-45, 45]
-  if (x > 45) {
-    x = 45;
-  } else if (x < -45) {
-    x = -45;
+  // constrain x value to the range [-30, 30]
+  if (x > 30) {
+    x = 30;
+  } else if (x < -30) {
+    x = -30;
   } 
 
-  if (y > 45) {
-    y = 45;
-  } else if (y < -45) {
-    y = -45;
+   // constrain y value to the range [-15, 15]
+  if (y > 15) {
+    y = 15;
+  } else if (y < -15) {
+    y = -15;
   } 
 
   if (posX >= minX && posX <= maxX) {
-    posX += x / 45 * 2;
+    posX += x / 30 * 3;
   }
   if (posY >= minY && posY <= maxY) {
-    posY += y / 45 * 2;
+    posY += y / 15 * 3;
   }
 
   if (posX < minX) {
