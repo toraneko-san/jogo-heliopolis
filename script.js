@@ -1,4 +1,4 @@
-const ball = document.querySelector(".ball");
+const ball = document.querySelector(".ball-container");
 const garden = document.querySelector(".garden");
 const outputOrientation = document.querySelector(".output-orientation");
 const outputMotion = document.querySelector(".output-motion");
