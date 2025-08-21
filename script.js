@@ -33,16 +33,6 @@ function handleOrientation(event) {
   ball.style.top = `${(maxX * x) / 180 - 10}px`; // rotating device around the x axis moves the ball vertically
 }
 
-function handleMotionEvent(event) {
-  const x = event.accelerationIncludingGravity.x;
-  const y = event.accelerationIncludingGravity.y;
-  const z = event.accelerationIncludingGravity.z;
-
-  outputMotion.textContent = `x: ${x}\n`;
-  outputMotion.textContent += `y: ${y}\n`;
-  outputMotion.textContent += `z: ${y}\n`;
-}
-
 document.querySelector(".orientation").addEventListener("click", () => {
   if (typeof DeviceOrientationEvent.requestPermission === "function") {
     DeviceOrientationEvent.requestPermission().then((permissionState) => {
@@ -53,13 +43,4 @@ document.querySelector(".orientation").addEventListener("click", () => {
   }
 });
 
-document.querySelector(".motion").addEventListener("click", () => {
-  if (typeof DeviceMotionEvent.requestPermission === "function") {
-    DeviceMotionEvent.requestPermission().then((permissionState) => {
-      if (permissionState === "granted") {
-        window.addEventListener("devicemotion", handleMotionEvent, true);
-      }
-    });
-  }
-});
 
