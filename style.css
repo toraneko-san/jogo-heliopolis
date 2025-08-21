@@ -4,7 +4,7 @@
   height: 500px; /*200px*/
   border: 5px solid #cccccc;
   border-radius: 10px;
-  background: url(assets/mapa.png);
+  background-image: url(assets/mapa.png);
   background-size: 500px 500px;
 }
 
@@ -14,7 +14,7 @@
   left: 10px; /* randomizar no começo do jogo */
   width: 20px;
   height: 20px;
-  background: green;
+  background: blue;
   border-radius: 100%;
 }
 
@@ -23,4 +23,5 @@
   inset: 0;
   z-index: 1;
   background: black;
+  /* background: radial-gradient(circle at 200px 200px, transparent 100px, rgba(0, 0, 0) 150px); */
 }
