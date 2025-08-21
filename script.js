@@ -57,7 +57,7 @@ function handleOrientation(event) {
   // It centers the positioning point to the center of the ball
   jogador.style.left = `${posY}px`; // rotating device around the y axis moves the jogador horizontally
   jogador.style.top = `${posX}px`; // rotating device around the x axis moves the ball vertically
-  fogOfWar.style.background = `radial-gradient(circle at ${posX}px ${posY}px, transparent 100px, rgba(0, 0, 0, 0.8) 150px)`;
+  fogOfWar.style.background = `radial-gradient(circle at ${posY}px ${posX}px, transparent 100px, rgba(0, 0, 0) 150px)`;
 }
 
 document.querySelector(".orientation").addEventListener("click", () => {
