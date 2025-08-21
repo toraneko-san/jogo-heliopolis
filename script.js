@@ -1,12 +1,13 @@
-const ball = document.querySelector(".ball");
-const garden = document.querySelector(".garden");
+const tabuleiro = document.querySelector(".tabuleiro");
+const jogador = document.querySelector(".jogador");
+const fogOfWar = document.querySelector(".fog-of-war");
 const outputOrientation = document.querySelector(".output-orientation");
 const outputMotion = document.querySelector(".output-motion");
 
 let [posX, posY] = [10, 10];
 
-const [minX, maxX] = [0, garden.clientWidth - ball.clientWidth];
-const [minY, maxY] = [0, garden.clientWidth - ball.clientWidth];
+const [minX, maxX] = [0, tabuleiro.clientWidth - jogador.clientWidth];
+const [minY, maxY] = [0, tabuleiro.clientWidth - jogador.clientWidth];
 
 function handleOrientation(event) {
   let x = event.beta; // In degree in the range [-180,180)
@@ -54,8 +55,9 @@ function handleOrientation(event) {
   outputOrientation.textContent += `posY: ${posY}\n`;
 
   // It centers the positioning point to the center of the ball
-  ball.style.left = `${posY}px`; // rotating device around the y axis moves the ball horizontally
-  ball.style.top = `${posX}px`; // rotating device around the x axis moves the ball vertically
+  jogador.style.left = `${posY}px`; // rotating device around the y axis moves the jogador horizontally
+  jogador.style.top = `${posX}px`; // rotating device around the x axis moves the ball vertically
+  fogOfWar.style.background = `radial-gradient(circle at ${posX}px ${posY}px, transparent 100px, rgba(0, 0, 0, 0.8) 150px)`;
 }
 
 document.querySelector(".orientation").addEventListener("click", () => {
