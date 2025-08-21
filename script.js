@@ -27,9 +27,18 @@ function handleOrientation(event) {
 
   if (posX > ball.clientWidth / 2 && posX < maxX) {
     posX += x / 90;
+  } else if (posX <= ball.clientWidth / 2) {
+    posX += 1;
+  } else if (posX >= maxX) {
+    posX -= 1;
   }
+
   if (posY > ball.clientWidth / 2 && posY < maxY) {
-    posY += y / 90;
+    posY += x / 90;
+  } else if (posY <= ball.clientWidth / 2) {
+    posY += 1;
+  } else if (posY >= maxY) {
+    posY -= 1;
   }
 
   outputOrientation.textContent += `maxX: ${maxX}\n`;
