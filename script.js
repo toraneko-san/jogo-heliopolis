@@ -6,8 +6,8 @@ const outputMotion = document.querySelector(".output-motion");
 let posX = 10;
 let posY = 10;
 
-const maxX = garden.clientWidth - (ball.clientWidth / 2);
-const maxY = garden.clientHeight - (ball.clientHeight / 2);
+const maxX = garden.clientWidth - ball.clientWidth / 2;
+const maxY = garden.clientHeight - ball.clientHeight / 2;
 
 function handleOrientation(event) {
   let x = event.beta; // In degree in the range [-180,180)
@@ -25,20 +25,14 @@ function handleOrientation(event) {
     x = -90;
   }
 
-  if (x > 0) {
-    posX += x / 90;
-  } else {
-    posX -= x / 90;
-  }
+  posX += x / 90;
+  posY += y / 90;
 
-  if (y > 0) {
-    posY += y / 90;
-  } else {
-    posY -= y / 90;
-  }
+  outputOrientation.textContent = `posX: ${posX}\n`;
+  outputOrientation.textContent += `posY: ${posY}\n`;
 
   // It centers the positioning point to the center of the ball
-  ball.style.left = `${(posY)}px`; // rotating device around the y axis moves the ball horizontally
+  ball.style.left = `${posY}px`; // rotating device around the y axis moves the ball horizontally
   ball.style.top = `${posX}px`; // rotating device around the x axis moves the ball vertically
 }
 
