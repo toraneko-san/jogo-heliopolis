@@ -3,8 +3,11 @@ const garden = document.querySelector(".garden");
 const outputOrientation = document.querySelector(".output-orientation");
 const outputMotion = document.querySelector(".output-motion");
 
-const maxX = garden.clientWidth - ball.clientWidth;
-const maxY = garden.clientHeight - ball.clientHeight;
+let posX = 10;
+let posY = 10;
+
+const maxX = garden.clientWidth - (ball.clientWidth / 2);
+const maxY = garden.clientHeight - (ball.clientHeight / 2);
 
 function handleOrientation(event) {
   let x = event.beta; // In degree in the range [-180,180)
@@ -22,15 +25,21 @@ function handleOrientation(event) {
     x = -90;
   }
 
-  // To make computation easier we shift the range of
-  // x and y to [0,180]
-  x += 90;
-  y += 90;
+  if (x > 0) {
+    posX += x / 90;
+  } else {
+    posX -= x / 90;
+  }
 
-  // 10 is half the size of the ball
+  if (y > 0) {
+    posY += y / 90;
+  } else {
+    posY -= y / 90;
+  }
+
   // It centers the positioning point to the center of the ball
-  ball.style.left = `${(maxY * y) / 180 - 10}px`; // rotating device around the y axis moves the ball horizontally
-  ball.style.top = `${(maxX * x) / 180 - 10}px`; // rotating device around the x axis moves the ball vertically
+  ball.style.left = `${(posY)}px`; // rotating device around the y axis moves the ball horizontally
+  ball.style.top = `${posX}px`; // rotating device around the x axis moves the ball vertically
 }
 
 document.querySelector(".orientation").addEventListener("click", () => {
@@ -42,5 +51,3 @@ document.querySelector(".orientation").addEventListener("click", () => {
     });
   }
 });
-
-
