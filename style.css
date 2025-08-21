@@ -8,8 +8,8 @@
 
 .ball {
   position: absolute;
-  top: 90px;
-  left: 90px;
+  top: 10px; /* randomizar no começo do jogo */
+  left: 10px; /* randomizar no começo do jogo */
   width: 20px;
   height: 20px;
   background: green;
