@@ -21,20 +21,20 @@ function handleOrientation(event) {
     x = 30;
   } else if (x < -30) {
     x = -30;
-  } 
+  }
 
-   // constrain y value to the range [-15, 15]
+  // constrain y value to the range [-15, 15]
   if (y > 15) {
     y = 15;
   } else if (y < -15) {
     y = -15;
-  } 
+  }
 
   if (posX >= minX && posX <= maxX) {
-    posX += x / 30 * 3;
+    posX += (x / 30) * 3;
   }
   if (posY >= minY && posY <= maxY) {
-    posY += y / 15 * 3;
+    posY += (y / 15) * 3;
   }
 
   if (posX < minX) {
@@ -67,5 +67,20 @@ document.querySelector(".orientation").addEventListener("click", () => {
         window.addEventListener("deviceorientation", handleOrientation);
       }
     });
+  }
+});
+
+const lugares = [];
+
+document.querySelector(".lugar1").addEventListener("click", () => {
+  if (lugares.length == 0) {
+    lugares.push(0);
+  }
+});
+
+document.querySelector(".lugar2").addEventListener("click", () => {
+  if (lugares.length == 1) {
+    lugares.push(1);
+    alert("venceu!!");
   }
 });

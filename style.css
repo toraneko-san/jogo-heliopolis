@@ -4,12 +4,8 @@
   height: 500px;
   border: 5px solid #cccccc;
   border-radius: 10px;
-}
-
-.mapa {
-  position: absolute;
-  width: 500px;
-  height: 500px;
+  background-image: url(assets/mapa.jpg);
+  background-size: 500px 500px;
 }
 
 .jogador {
@@ -18,7 +14,7 @@
   left: 10px; /* randomizar no começo do jogo */
   width: 20px;
   height: 20px;
-  background: powderblue;
+  background-color: gold;
   border-radius: 100%;
 }
 
@@ -26,6 +22,25 @@
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background: black;
   /* background: radial-gradient(circle at 200px 200px, transparent 100px, rgba(0, 0, 0) 150px); */
+}
+
+.lugar1 {
+  position: absolute;
+  top: 400px;
+  left: 400px;
+  width: 50px;
+  height: 50px;
+  background-color: greenyellow;
+}
+
+.lugar2 {
+  position: absolute;
+  top: 300px;
+  left: 50px;
+  width: 50px;
+  height: 50px;
+  background-color: cyan;
 }
