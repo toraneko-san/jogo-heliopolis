@@ -1,11 +1,15 @@
 .tabuleiro {
   position: relative;
-  width: 500px; /*200px*/
-  height: 500px; /*200px*/
+  width: 500px;
+  height: 500px;
   border: 5px solid #cccccc;
   border-radius: 10px;
-  background-image: url(assets/mapa.png);
-  background-size: 500px 500px;
+}
+
+.mapa {
+  position: absolute;
+  width: 500px;
+  height: 500px;
 }
 
 .jogador {
