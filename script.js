@@ -32,6 +32,8 @@ function handleOrientation(event) {
     posY += y / 90;
   }
 
+  outputOrientation.textContent += `maxX: ${maxX}\n`;
+  outputOrientation.textContent += `maxY: ${maxY}\n`;
   outputOrientation.textContent += `posX: ${posX}\n`;
   outputOrientation.textContent += `posY: ${posY}\n`;
 
