@@ -15,20 +15,24 @@ function handleOrientation(event) {
   outputOrientation.textContent = `beta: ${x}\n`;
   outputOrientation.textContent += `gamma: ${y}\n`;
 
-  // Because we don't want to have the device upside down
-  // We constrain the x value to the range [-90,90]
-  if (x > 90) {
-    x = 90;
-  }
-  if (x < -90) {
-    x = -90;
-  }
+  // constrain x and y value to the range [-45, 45]
+  if (x > 45) {
+    x = 45;
+  } else if (x < -45) {
+    x = -45;
+  } 
+
+  if (y > 45) {
+    y = 45;
+  } else if (y < -45) {
+    y = -45;
+  } 
 
   if (posX >= minX && posX <= maxX) {
-    posX += x / 90;
+    posX += x / 45 * 2;
   }
   if (posY >= minY && posY <= maxY) {
-    posY += y / 90;
+    posY += y / 45 * 2;
   }
 
   if (posX < minX) {
