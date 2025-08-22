@@ -60,7 +60,7 @@ function handleOrientation(event) {
   fogOfWar.style.background = `radial-gradient(circle at ${posY}px ${posX}px, transparent 100px, rgba(0, 0, 0) 150px)`;
 }
 
-const { userAgent } = navigator.userAgent;
+const { userAgent } = navigator;
 
 if (/android/i.test(userAgent)) {
   alert("O sistema operacional é Android");
