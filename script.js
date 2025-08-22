@@ -63,6 +63,7 @@ function handleOrientation(event) {
 const { userAgent } = navigator.userAgent;
 
 if (/android/i.test(userAgent)) {
+  alert("O sistema operacional é Android");
   window.addEventListener("deviceorientation", handleOrientation);
 }
 
