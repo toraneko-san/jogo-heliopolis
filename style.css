@@ -23,7 +23,7 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: black;
+  /* background: black; */
   /* background: radial-gradient(circle at 200px 200px, transparent 100px, rgba(0, 0, 0) 150px); */
 }
 

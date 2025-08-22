@@ -67,6 +67,8 @@ document.querySelector(".orientation").addEventListener("click", () => {
         window.addEventListener("deviceorientation", handleOrientation);
       }
     });
+  } else {
+    alert("Não foi possível acessar os sensores de movimento");
   }
 });
 
